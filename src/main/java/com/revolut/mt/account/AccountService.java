@@ -20,7 +20,7 @@ public class AccountService {
     return account;
   }
 
-  Account getAccount(final String accountNumber) {
+  public Account getAccount(final String accountNumber) {
     return accountData.find(accountNumber);
   }
 
