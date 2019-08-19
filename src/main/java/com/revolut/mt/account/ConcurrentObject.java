@@ -7,19 +7,19 @@ public abstract class ConcurrentObject {
 
   private static ReadWriteLock lock = new ReentrantReadWriteLock();
 
-  public void partialLock() {
+  void partialLock() {
     lock.readLock().lock();
   }
 
-  public void partialUnlock() {
+  void partialUnlock() {
     lock.readLock().unlock();
   }
 
-  public void fullLock() {
+  void fullLock() {
     lock.writeLock().lock();
   }
 
-  public void fullUnlock() {
+  void fullUnlock() {
     lock.writeLock().unlock();
   }
 

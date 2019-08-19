@@ -1,6 +1,5 @@
 package com.revolut.mt.account;
 
-import com.revolut.mt.transfer.AccountData;
 import java.math.BigDecimal;
 import org.junit.Assert;
 import org.junit.Before;

@@ -1,7 +1,8 @@
-package com.revolut.mt.transfer;
+package com.revolut.mt.account;
 
-import com.revolut.mt.account.Account;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AccountData {
@@ -10,6 +11,10 @@ public class AccountData {
 
   public Account find(String accountNumber) {
     return accounts.get(accountNumber);
+  }
+
+  public List<Account> findAll() {
+    return new ArrayList<>(accounts.values());
   }
 
   public void save(Account account) {

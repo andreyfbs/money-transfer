@@ -1,7 +1,7 @@
 package com.revolut.mt.account;
 
-import com.revolut.mt.transfer.AccountData;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 public class AccountService {
@@ -19,6 +19,15 @@ public class AccountService {
     accountData.save(account);
     return account;
   }
+
+  Account getAccount(final String accountNumber) {
+    return accountData.find(accountNumber);
+  }
+
+  List<Account> getAllAccounts() {
+    return accountData.findAll();
+  }
+
 
   public void transferBetweenAccounts(final Account accountFrom, final Account accountTo, final BigDecimal value) {
     accountFrom.fullLock();

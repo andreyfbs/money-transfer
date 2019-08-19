@@ -2,7 +2,7 @@ package com.revolut.mt;
 
 import com.revolut.mt.account.Account;
 import com.revolut.mt.account.AccountService;
-import com.revolut.mt.transfer.AccountData;
+import com.revolut.mt.account.AccountData;
 import com.revolut.mt.transfer.TransferData;
 import com.revolut.mt.transfer.TransferService;
 import java.math.BigDecimal;
