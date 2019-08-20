@@ -10,7 +10,11 @@ public class AccountData {
   private static final Map<String, Account> accounts = new HashMap<>();
 
   public Account find(String accountNumber) {
-    return accounts.get(accountNumber);
+    if (accounts.containsKey(accountNumber)) {
+      return accounts.get(accountNumber);
+    }
+    throw new AccountNotFoundApiException();
+
   }
 
   public List<Account> findAll() {
