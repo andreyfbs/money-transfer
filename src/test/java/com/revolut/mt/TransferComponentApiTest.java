@@ -1,14 +1,23 @@
 package com.revolut.mt;
 
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-public class AppicationRestServer {
+public class TransferComponentApiTest {
 
-  public static void main(String[] args) throws Exception {
+  private static Server server;
+
+  @BeforeClass
+  public static void setUp() throws Exception {
     // Create Server
-    Server server = new Server(8010);
+    server = new Server(8060);
 
     // Configure ServletContextHandler
     ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -27,6 +36,21 @@ public class AppicationRestServer {
 
     // Start the server
     server.start();
-    server.join();
   }
+
+  @AfterClass
+  public static void tearDown() throws Exception {
+    server.stop();
+  }
+
+  @Test
+  public void get_accounts() {
+
+    given().
+        when().
+        get("http://localhost:8060/accounts").
+        then().
+        assertThat().statusCode(200);
+  }
+
 }
