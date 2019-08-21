@@ -1,6 +1,6 @@
 package com.revolut.mt;
 
-class PathTestConstants {
+class TestConstants {
 
   static final String HOST_SERVER = "http://localhost";
 

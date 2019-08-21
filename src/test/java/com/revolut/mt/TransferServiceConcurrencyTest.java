@@ -15,7 +15,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TransferServiceConcurrecyTest {
+public class TransferServiceConcurrencyTest {
 
   private static ExecutorService pool;
 

@@ -8,7 +8,7 @@ public class MoneyTransferApplicationRestServer {
 
   public static void main(String[] args) throws Exception {
     // Create Server
-    Server server = new Server(8010);
+    Server server = new Server(ApplicationProperties.PORT_SERVER);
 
     // Configure ServletContextHandler
     ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);

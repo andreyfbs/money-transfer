@@ -29,6 +29,7 @@ public class AccountService {
   }
 
   public void transferBetweenAccounts(final Account accountFrom, final Account accountTo, final BigDecimal value) {
+    // Here, it needs to lock the accounts to be thread safe
     accountFrom.fullLock();
     accountTo.fullLock();
     try {

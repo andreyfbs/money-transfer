@@ -1,7 +1,7 @@
 package com.revolut.mt;
 
-import static com.revolut.mt.PathTestConstants.ACCOUNTS;
-import static com.revolut.mt.PathTestConstants.TRANSFERS;
+import static com.revolut.mt.TestConstants.ACCOUNTS;
+import static com.revolut.mt.TestConstants.TRANSFERS;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;

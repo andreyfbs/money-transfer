@@ -8,7 +8,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-import static com.revolut.mt.PathTestConstants.*;
+import static com.revolut.mt.TestConstants.*;
 import static io.restassured.RestAssured.given;
 
 public abstract class BaseApiTest {
