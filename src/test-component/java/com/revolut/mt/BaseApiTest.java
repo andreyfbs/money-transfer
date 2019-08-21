@@ -5,13 +5,34 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 
 import static com.revolut.mt.PathTestConstants.*;
+import static io.restassured.RestAssured.given;
 
 public abstract class BaseApiTest {
 
     private static Server server;
+
+    @Before
+    public void setup() {
+        // Clear all Accounts
+        given()
+            .when()
+            .delete(ACCOUNTS)
+            .then()
+            .assertThat()
+            .statusCode(200);
+
+        // Clear all Transfers
+        given()
+            .when()
+            .delete(TRANSFERS)
+            .then()
+            .assertThat()
+            .statusCode(200);
+    }
 
     @BeforeClass
     public static void setUp() throws Exception {

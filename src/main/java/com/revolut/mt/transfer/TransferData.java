@@ -7,7 +7,15 @@ public class TransferData {
 
   private static final Set<Transfer> transfers = new HashSet<>();
 
-  public void save(Transfer transfer) {
+  void save(Transfer transfer) {
     transfers.add(transfer);
+  }
+
+  Set<Transfer> findAll() {
+    return transfers;
+  }
+
+  void deleteAll() {
+    transfers.clear();
   }
 }

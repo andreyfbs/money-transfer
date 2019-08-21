@@ -4,7 +4,5 @@ public class PathConstants {
 
   public static final String ACCOUNTS = "/accounts";
 
-  public static final String ACCOUNT = "/{accountNumber}";
-
   public static final String TRANSFERS = "/transfers";
 }

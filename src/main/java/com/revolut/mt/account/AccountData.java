@@ -1,15 +1,15 @@
 package com.revolut.mt.account;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class AccountData {
 
-  private static final Map<String, Account> accounts = new HashMap<>();
+  private static final Map<String, Account> accounts = new ConcurrentHashMap<>();
 
-  public Account find(String accountNumber) {
+  Account find(String accountNumber) {
     if (accounts.containsKey(accountNumber)) {
       return accounts.get(accountNumber);
     }
@@ -17,12 +17,16 @@ public class AccountData {
 
   }
 
-  public List<Account> findAll() {
+  List<Account> findAll() {
     return new ArrayList<>(accounts.values());
   }
 
-  public void save(Account account) {
+  void save(Account account) {
     accounts.put(account.getAccountNumber(), account);
+  }
+
+  void deleteAll() {
+    accounts.clear();
   }
 
 }

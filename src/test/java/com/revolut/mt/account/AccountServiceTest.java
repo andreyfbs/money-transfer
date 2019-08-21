@@ -30,6 +30,33 @@ public class AccountServiceTest {
     Assert.assertEquals(expectedBalance, currentBalance);
   }
 
+  @Test(expected = OperationNegativeAmountException.class)
+  public void withdrawNegativeAmount() {
+    // Arrange
+    final Account account = accountService.createAccount(new BigDecimal("5.34"));
+    final BigDecimal amountWithdraw = new BigDecimal("-3.45");
+
+    // Act
+    accountService.withdraw(account, amountWithdraw);
+
+    // Assert
+    // Exception
+  }
+
+
+  @Test(expected = InsufficientFundsException.class)
+  public void withdrawValueGreaterThanBalance() {
+    // Arrange
+    final Account account = accountService.createAccount(new BigDecimal("5.34"));
+    final BigDecimal amountWithdraw = new BigDecimal("9.45");
+
+    // Act
+    accountService.withdraw(account, amountWithdraw);
+
+    // Assert
+    // Exception
+  }
+
   @Test
   public void depositSuccessful() {
     // Arrange
@@ -42,6 +69,19 @@ public class AccountServiceTest {
 
     // Assert
     Assert.assertEquals(expectedBalance, currentBalance);
+  }
+
+  @Test(expected = OperationNegativeAmountException.class)
+  public void depositNegativeAmount() {
+    // Arrange
+    final Account account = accountService.createAccount(new BigDecimal("5.34"));
+    final BigDecimal amountWithdraw = new BigDecimal("-3.45");
+
+    // Act
+    accountService.deposit(account, amountWithdraw);
+
+    // Assert
+    // Exception
   }
 
   @Test

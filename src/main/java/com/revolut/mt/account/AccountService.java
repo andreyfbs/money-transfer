@@ -28,7 +28,6 @@ public class AccountService {
     return accountData.findAll();
   }
 
-
   public void transferBetweenAccounts(final Account accountFrom, final Account accountTo, final BigDecimal value) {
     accountFrom.fullLock();
     accountTo.fullLock();
@@ -44,7 +43,11 @@ public class AccountService {
   BigDecimal withdraw(final Account account, final BigDecimal value) {
 
     if (value.compareTo(account.getBalance()) > 0) {
-      throw new AmountGreaterThanBalanceException();
+      throw new InsufficientFundsException();
+    }
+
+    if (value.compareTo(BigDecimal.ZERO) <= 0) {
+      throw new OperationNegativeAmountException();
     }
 
     // Subtract From
@@ -53,11 +56,20 @@ public class AccountService {
     return balanceResult;
   }
 
-
   BigDecimal deposit(final Account account, final BigDecimal value) {
+
+    if (value.compareTo(BigDecimal.ZERO) <= 0) {
+      throw new OperationNegativeAmountException();
+    }
+
     // Add To
     BigDecimal balanceResult = account.getBalance().add(value);
     account.setBalance(balanceResult);
     return balanceResult;
   }
+
+  void deleteAllAccounts() {
+    accountData.deleteAll();
+  }
+
 }
